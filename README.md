@@ -1,6 +1,6 @@
 # coding-geek
 
-## usual coding practice to solve popular ones
+## Usual coding practice to solve popular ones
 
 ## Big-O Algorithms Complexity Cheat Sheet
 
