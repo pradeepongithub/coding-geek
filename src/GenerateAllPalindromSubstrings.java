@@ -21,17 +21,11 @@ public class GenerateAllPalindromSubstrings {
     }
 
     private static void expand(String s, int left, int right, Set<String> subStrings) {
-        while(left>=0 && right<s.length()){
-            //expend
-            if((s.charAt(left) == s.charAt(right))){
+        while(left>=0 && right<s.length() && s.charAt(left) == s.charAt(right)) {
+              //expend
                 left--;
                 right++;
                 subStrings.add(s.substring(left+1, right));
-            }
-            else {
-                break;
-            }
-
         }
     }
 }

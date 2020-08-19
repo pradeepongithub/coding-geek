@@ -7,8 +7,9 @@ public class LongestCommonSubsequence {
     static String s2 = "ANMABGK";
 
     public static void main(String[] args) {
-        String result = lcsSubStringDP(s1, s2);
-        System.out.println("LCS Substring: " + result + " Length: " + result.length());
+        String result = lcsSubString(s1, s2);
+        int ln = lcs(s1.length(), s2.length());
+        System.out.println("LCS Substring: " + result + " Length: " + result.length() + " Ln: " +  ln);
     }
 
     private static int lcs(int i, int j) {

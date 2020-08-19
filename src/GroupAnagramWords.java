@@ -6,7 +6,7 @@ public class GroupAnagramWords {
 
         String[] anagramWords = new String[]{"ram", "bebe", "appa", "papa", "arm", "mar"};
         //groupAnagramWords(anagramWords);
-        groupAnagramWordsInArray(anagramWords);
+        groupAnagramWords(anagramWords);
     }
 
     private static void groupAnagramWords(String[] anagramWords) {

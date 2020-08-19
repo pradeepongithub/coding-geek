@@ -5,7 +5,7 @@ public class LongestUniqueSubstring {
 
     public static void main(String[] args) {
 
-        System.out.println("Longest Ditinct Substring in `aabmnaa` is : " + longestDistinctSubString("aabbmnaa"));
+        System.out.println("Longest Distinct Substring in `aabmnaa` is : " + longestDistinctSubString("aabbmnaa"));
     }
 
     private static String longestDistinctSubString(String s) {
