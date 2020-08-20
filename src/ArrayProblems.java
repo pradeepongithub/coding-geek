@@ -13,6 +13,7 @@ public class ArrayProblems {
         //sortZerosAndOnes(arr);
         int[] arr1 ={0,0,3,4,4,7,8,9,9};
         removeDuplicateInSortedArray(arr1);
+        getIndicesOfElementsSum(7, arr1)
     }
 
     private static void findPairArraySumBruteForce(int sum, int ...a){
@@ -88,7 +89,19 @@ public class ArrayProblems {
         for (int i = 0; i < k; i++) {
             System.out.print("\t" + nums[i]);
         }
+    }
 
+    private static int[] getIndicesOfElementsSum(int targetsum, int... nums) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i=0; i<nums.length;i++){
+            int temp = targetsum-nums[i]
+            if(map.containsKey(temp)){
+            return new int[]{map.get(i),i}
+            }
+        }
+        return new int[]{};
     }
 
  }
