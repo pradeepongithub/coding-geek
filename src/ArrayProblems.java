@@ -12,8 +12,14 @@ public class ArrayProblems {
         int[] arr ={0,0,1,0,1,1,1,0,1};
         //sortZerosAndOnes(arr);
         int[] arr1 ={0,0,3,4,4,7,8,9,9};
-        removeDuplicateInSortedArray(arr1);
-        getIndicesOfElementsSum(7, arr1)
+        int[] arr2 ={0,0,5,4,4,7,8,5,9};
+
+        //removeDuplicateInSortedArray(arr1);
+        //removeDuplicateInUnSortedArray(arr2);
+        //getIndicesOfElementsSum(7, arr1);
+        int[] arr3 = {7,1,5,3,6,4};
+        System.out.println("Get Max Profit for buy-sell stocks in many transactions: " + getMaxProfitBuySellStocksAllowedManyTransactions(arr3));
+        System.out.println("Get Max Profit for buy-sell stocks in one transaction: " + getMaxProfitBuySellStocksAllowedOneTransaction(arr3));
     }
 
     private static void findPairArraySumBruteForce(int sum, int ...a){
@@ -91,17 +97,57 @@ public class ArrayProblems {
         }
     }
 
+    private static void removeDuplicateInUnSortedArray(int... nums) {
+        System.out.println("Original Array:");
+        for (int i : nums) {
+            System.out.print("\t" + i);
+        }
+        int i = 0, j = 1;
+        while(j < nums.length)
+            if(nums[i] != nums[j])
+                nums[++i] = nums[j++];
+            else j++;
+        System.out.println("\nAfter remove duplicates in Array:");
+        for (int k = 0; k <= i; k++) {
+            System.out.print("\t" + nums[k]);
+        }
+    }
+
     private static int[] getIndicesOfElementsSum(int targetsum, int... nums) {
 
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int i=0; i<nums.length;i++){
-            int temp = targetsum-nums[i]
+            int temp = targetsum-nums[i];
             if(map.containsKey(temp)){
-            return new int[]{map.get(i),i}
+            return new int[]{map.get(i),i};
             }
         }
         return new int[]{};
+    }
+
+    private static int getMaxProfitBuySellStocksAllowedManyTransactions(int... prices) {
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                maxProfit += prices[i] - prices[i - 1];
+            }
+        }
+        return maxProfit;
+    }
+
+    private static int getMaxProfitBuySellStocksAllowedOneTransaction(int... prices) {
+        int maxProfit = 0;
+        int minBuyPrice = Integer.MAX_VALUE;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < minBuyPrice) {
+                minBuyPrice = prices[i];
+            }
+            if(maxProfit < prices[i]-minBuyPrice){
+                maxProfit = prices[i]-minBuyPrice;
+            }
+        }
+        return maxProfit;
     }
 
  }
