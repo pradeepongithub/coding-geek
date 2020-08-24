@@ -12,14 +12,17 @@ public class ArrayProblems {
         int[] arr ={0,0,1,0,1,1,1,0,1};
         //sortZerosAndOnes(arr);
         int[] arr1 ={0,0,3,4,4,7,8,9,9};
-        int[] arr2 ={0,0,5,4,4,7,8,5,9};
+        int[] arr2 ={0,0,5,4,4,7,5};
 
         //removeDuplicateInSortedArray(arr1);
         //removeDuplicateInUnSortedArray(arr2);
         //getIndicesOfElementsSum(7, arr1);
         int[] arr3 = {7,1,5,3,6,4};
-        System.out.println("Get Max Profit for buy-sell stocks in many transactions: " + getMaxProfitBuySellStocksAllowedManyTransactions(arr3));
-        System.out.println("Get Max Profit for buy-sell stocks in one transaction: " + getMaxProfitBuySellStocksAllowedOneTransaction(arr3));
+        //System.out.println("Get Max Profit for buy-sell stocks in many transactions: " + getMaxProfitBuySellStocksAllowedManyTransactions(arr3));
+        //System.out.println("Get Max Profit for buy-sell stocks in one transaction: " + getMaxProfitBuySellStocksAllowedOneTransaction(arr3));
+
+        //System.out.println("Get Duplicate in an array : " + getDuplicateInArray(arr2));
+        System.out.println(getUniqueInArray(arr2));
     }
 
     private static void findPairArraySumBruteForce(int sum, int ...a){
@@ -148,6 +151,29 @@ public class ArrayProblems {
             }
         }
         return maxProfit;
+    }
+
+    private static boolean getDuplicateInArray(int... nums) {
+        if (nums.length == 0 || nums.length == 1) {
+            return false;
+        }
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int getUniqueInArray(int ...nums){
+        if(nums.length==1){
+            return nums[0];
+        }
+        int n = 0;
+        for(int num:nums){
+            n = n ^ num;
+        }
+        return n;
     }
 
  }
