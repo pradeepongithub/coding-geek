@@ -1,14 +1,14 @@
-public class LinkList<T> {
+public class StackWithLinkList<T> {
 
     private Node head;
 
-    public LinkList(T item) {
+    public StackWithLinkList(T item) {
         head = new Node(item);
     }
 
     public static void main(String[] args) {
 
-        LinkList<Integer> ll = new LinkList(10);
+        StackWithLinkList<Integer> ll = new StackWithLinkList(10);
         ll.viewLL();
         System.out.println("Push : ");
         ll.push(15);
