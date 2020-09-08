@@ -17,12 +17,13 @@ public class ArrayProblems {
         //removeDuplicateInSortedArray(arr1);
         //removeDuplicateInUnSortedArray(arr2);
         //getIndicesOfElementsSum(7, arr1);
-        int[] arr3 = {7,1,5,3,6,4};
+        int[] arr3 = {0,7,1,5,3,6,4};
         //System.out.println("Get Max Profit for buy-sell stocks in many transactions: " + getMaxProfitBuySellStocksAllowedManyTransactions(arr3));
         //System.out.println("Get Max Profit for buy-sell stocks in one transaction: " + getMaxProfitBuySellStocksAllowedOneTransaction(arr3));
 
         //System.out.println("Get Duplicate in an array : " + getDuplicateInArray(arr2));
         System.out.println(getUniqueInArray(arr2));
+        System.out.println(getMinCommonValueInArray(arr1,arr2,arr3));
     }
 
     private static void findPairArraySumBruteForce(int sum, int ...a){
@@ -174,6 +175,18 @@ public class ArrayProblems {
             n = n ^ num;
         }
         return n;
+    }
+
+    private static int getMinCommonValueInArray(int[] a, int[] b, int[] c) {
+        Arrays.sort(a);
+        Arrays.sort(b);
+        Arrays.sort(c);
+
+        if (a[0] == b[0] && b[0] == c[0]) {
+            return a[0];
+        }
+        return -1;
+
     }
 
  }
