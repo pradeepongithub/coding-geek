@@ -9,41 +9,43 @@ public class ArrayProblems {
         //findPairArraySumHashMap(10, new int[]{8,7,2,5,3,1});
 
         //moveZeroes(new int[]{0,8,7,0,0,3,1,0});
-        int[] arr ={0,0,1,0,1,1,1,0,1};
+        int[] arr = {0, 0, 1, 0, 1, 1, 1, 0, 1};
         //sortZerosAndOnes(arr);
-        int[] arr1 ={0,0,3,4,4,7,8,9,9};
-        int[] arr2 ={0,0,5,4,4,7,5};
+        int[] arr1 = {0, 0, 3, 4, 4, 7, 8, 9, 9};
+        int[] arr2 = {0, 0, 5, 4, 4, 7, 5};
 
         //removeDuplicateInSortedArray(arr1);
         //removeDuplicateInUnSortedArray(arr2);
         //getIndicesOfElementsSum(7, arr1);
-        int[] arr3 = {0,7,1,5,3,6,4};
+        int[] arr3 = {1, 2, 3, 4, 5, 6, 7};
         //System.out.println("Get Max Profit for buy-sell stocks in many transactions: " + getMaxProfitBuySellStocksAllowedManyTransactions(arr3));
         //System.out.println("Get Max Profit for buy-sell stocks in one transaction: " + getMaxProfitBuySellStocksAllowedOneTransaction(arr3));
 
         //System.out.println("Get Duplicate in an array : " + getDuplicateInArray(arr2));
-        System.out.println(getUniqueInArray(arr2));
-        System.out.println(getMinCommonValueInArray(arr1,arr2,arr3));
+        //System.out.println(getUniqueInArray(arr2));
+        //System.out.println(getMinCommonValueInArray(arr1,arr2,arr3));
+        System.out.println("Rotate Arrays: ");
+        rotateArrayRight(3, arr3);
     }
 
-    private static void findPairArraySumBruteForce(int sum, int ...a){
-        for(int i=0;i<a.length;i++){
-            for(int j=i+1;j<a.length-1;j++)
-            if(sum-a[i]==a[j]){
-                System.out.println("Pair found at index: " + i + " " + j);
-                return;
-            }
+    private static void findPairArraySumBruteForce(int sum, int... a) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length - 1; j++)
+                if (sum - a[i] == a[j]) {
+                    System.out.println("Pair found at index: " + i + " " + j);
+                    return;
+                }
         }
     }
 
-    private static void findPairArraySumHashMap(int sum, int ...a){
+    private static void findPairArraySumHashMap(int sum, int... a) {
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i=0;i<a.length-1;i++){
-            if(map.containsKey(sum-a[i])){
-                System.out.println("Pair found by hashmap at index: " + map.get(sum-a[i]) + " and " + i);
+        for (int i = 0; i < a.length - 1; i++) {
+            if (map.containsKey(sum - a[i])) {
+                System.out.println("Pair found by hashmap at index: " + map.get(sum - a[i]) + " and " + i);
                 return;
             }
-            map.put(a[i],i);
+            map.put(a[i], i);
         }
 
     }
@@ -107,8 +109,8 @@ public class ArrayProblems {
             System.out.print("\t" + i);
         }
         int i = 0, j = 1;
-        while(j < nums.length)
-            if(nums[i] != nums[j])
+        while (j < nums.length)
+            if (nums[i] != nums[j])
                 nums[++i] = nums[j++];
             else j++;
         System.out.println("\nAfter remove duplicates in Array:");
@@ -121,10 +123,10 @@ public class ArrayProblems {
 
         Map<Integer, Integer> map = new HashMap<>();
 
-        for (int i=0; i<nums.length;i++){
-            int temp = targetsum-nums[i];
-            if(map.containsKey(temp)){
-            return new int[]{map.get(i),i};
+        for (int i = 0; i < nums.length; i++) {
+            int temp = targetsum - nums[i];
+            if (map.containsKey(temp)) {
+                return new int[]{map.get(i), i};
             }
         }
         return new int[]{};
@@ -147,8 +149,8 @@ public class ArrayProblems {
             if (prices[i] < minBuyPrice) {
                 minBuyPrice = prices[i];
             }
-            if(maxProfit < prices[i]-minBuyPrice){
-                maxProfit = prices[i]-minBuyPrice;
+            if (maxProfit < prices[i] - minBuyPrice) {
+                maxProfit = prices[i] - minBuyPrice;
             }
         }
         return maxProfit;
@@ -166,12 +168,12 @@ public class ArrayProblems {
         return false;
     }
 
-    private static int getUniqueInArray(int ...nums){
-        if(nums.length==1){
+    private static int getUniqueInArray(int... nums) {
+        if (nums.length == 1) {
             return nums[0];
         }
         int n = 0;
-        for(int num:nums){
+        for (int num : nums) {
             n = n ^ num;
         }
         return n;
@@ -189,4 +191,44 @@ public class ArrayProblems {
 
     }
 
- }
+    private static void rotateArray(int k, int... a) {
+        System.out.println(" ");
+        int start = 0, end = a.length - 1;
+        while (k > 0) {
+            a[start] = a[end];
+            a[end] = a[start];
+            start++;
+            end--;
+            k--;
+        }
+        for (int i : a) {
+            System.out.print("\t " + i);
+        }
+    }
+
+    private static void rotateArrayRight(int k, int... a) {
+        System.out.println(" original array :");
+        for (int i : a) {
+            System.out.println(i);
+        }
+        k = k % a.length;
+        reverseArray(a.length - k, a.length - 1, a);
+        reverseArray(0, a.length - k - 1, a);
+        reverseArray(0, a.length - 1, a);
+        System.out.println(" after reverse array :");
+        for (int j : a) {
+            System.out.println(j);
+        }
+    }
+
+    private static void reverseArray(int start, int end, int... a) {
+        while (start < end) {
+            int temp = a[start];
+            a[start] = a[end];
+            a[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+}
