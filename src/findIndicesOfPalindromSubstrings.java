@@ -9,7 +9,6 @@ public class findIndicesOfPalindromSubstrings {
     }
 
     private static void getIndicesOfPalindromSubstrings(String s) {
-        StringBuilder sb = new StringBuilder();
         Set<String> set = new TreeSet<>();
         //odd and even length of palindrome
         for(int i=0;i<s.length();i++){

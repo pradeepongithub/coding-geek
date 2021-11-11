@@ -10,7 +10,6 @@ public class GenerateAllPalindromSubstrings {
 
     private static void generatePalindromSubStrings(String s) {
         Set<String> subStrings = new HashSet<>();
-        StringTokenizer tokenizer = new StringTokenizer(subStrings.toString() , ",");
 
         for(int i=0;i<s.length();i++){
             expand(s, i, i, subStrings); //even length palindrom

@@ -1,8 +1,6 @@
 import com.Employee;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -46,14 +44,14 @@ public class Java8Code {
 
         //Find max salary in each dept
         System.out.println("Max Sal in each dept: ");
-        Map<Integer, Optional<Employee>> maxSalEmpInEachDept = employees.stream().collect(Collectors.groupingBy(Employee::getDeptId,Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Employee::getSalary)))));
+        Map<Integer, Optional<Employee>> maxSalEmpInEachDept = employees.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Employee::getSalary)))));
 
         maxSalEmpInEachDept.entrySet().forEach(e->System.out.println(e.getKey() + "----" +e.getValue()));
 
         //Find min salary in each dept
 
         System.out.println("Min Sal in each dept: ");
-        Map<Integer,Optional<Employee>> minSalaryEmpInEachDept = employees.stream().collect(Collectors.groupingBy(Employee::getDeptId,Collectors.reducing(BinaryOperator.minBy(Comparator.comparing(Employee::getSalary)))));
+        Map<Integer,Optional<Employee>> minSalaryEmpInEachDept = employees.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.reducing(BinaryOperator.minBy(Comparator.comparing(Employee::getSalary)))));
 
         minSalaryEmpInEachDept.entrySet().forEach(e-> System.out.println( e.getKey() + "----" +e.getValue()));
 

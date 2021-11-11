@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class ArrayProblems {
 
@@ -25,7 +26,7 @@ public class ArrayProblems {
         //System.out.println(getUniqueInArray(arr2));
         //System.out.println(getMinCommonValueInArray(arr1,arr2,arr3));
         System.out.println("Rotate Arrays: ");
-        rotateArrayRight(3, arr3);
+        rotateArrayRight(8, arr3);
     }
 
     private static void findPairArraySumBruteForce(int sum, int... a) {
@@ -207,18 +208,14 @@ public class ArrayProblems {
     }
 
     private static void rotateArrayRight(int k, int... a) {
-        System.out.println(" original array :");
-        for (int i : a) {
-            System.out.println(i);
-        }
+        System.out.println("Original array: ");
+        Arrays.stream(a).forEach(i -> System.out.print("\t" + i));
         k = k % a.length;
         reverseArray(a.length - k, a.length - 1, a);
         reverseArray(0, a.length - k - 1, a);
         reverseArray(0, a.length - 1, a);
-        System.out.println(" after reverse array :");
-        for (int j : a) {
-            System.out.println(j);
-        }
+        System.out.println("\nafter reverse array from right by : " + k);
+        Arrays.stream(a).forEach(i -> System.out.print("\t" + i));
     }
 
     private static void reverseArray(int start, int end, int... a) {
